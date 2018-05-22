@@ -1,9 +1,8 @@
 # pif
 ## База данных
 ### csv
-MOEX.csv - данные по Индексу МосБиржи https://www.investing.com/indices/mcx
-
-MOEX10.csv - данные по Индексу ММВБ 10 https://www.investing.com/indices/mcx10
+* MOEX.csv - данные по Индексу МосБиржи https://www.investing.com/indices/mcx
+* MOEX10.csv - данные по Индексу ММВБ 10 https://www.investing.com/indices/mcx10
 
 RU1Y.csv - данные по кривой бескупонной доходности однолетних государственных облигаций Российской Федерации https://www.investing.com/rates-bonds/russia-1-year-bond-yield
 
