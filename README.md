@@ -3,16 +3,25 @@
 ### csv
 * MOEX.csv - данные по Индексу МосБиржи https://www.investing.com/indices/mcx
 * MOEX10.csv - данные по Индексу ММВБ 10 https://www.investing.com/indices/mcx10
-
-RU1Y.csv - данные по кривой бескупонной доходности однолетних государственных облигаций Российской Федерации https://www.investing.com/rates-bonds/russia-1-year-bond-yield
-
-MX.csv - данные по фьючерсу на Индекс МосБиржи с ближайшей датой исполненения https://www.moex.com/ru/forts/contractbaseresults.aspx
-
-10micexdata.csv - отредактированная база расчёта Индекса ММВБ 10 https://www.moex.com/ru/index/MICEX10INDEX/constituents/
-
-10micex.csv - таблица замены ISIN кодов на тикеры (для Индекса ММВБ 10)
+* RU1Y.csv - данные по кривой бескупонной доходности однолетних государственных облигаций Российской Федерации https://www.investing.com/rates-bonds/russia-1-year-bond-yield
+* MX.csv - данные по фьючерсу на Индекс МосБиржи с ближайшей датой исполненения https://www.moex.com/ru/forts/contractbaseresults.aspx
+* 10micexdata.csv - отредактированная база расчёта Индекса ММВБ 10 https://www.moex.com/ru/index/MICEX10INDEX/constituents/
+* 10micex.csv - таблица замены ISIN кодов на тикеры (для Индекса ММВБ 10)
 ## Программы
-### stock.R
+### index.R
+1. Начало
+* Подключение необходимых пакетов.
+* Глобальные настройки.
+* Добавление функций из программы functions.R
+2. Скачивание данных по индексным фондам или загрузка уже сохраненныйх данных:
+```
+load(paste0(DIR,"/pifdata/index/all.RData")) # таблица с описанием
+load(paste0(DIR,"/pifdata/index/allD.RData")) # данные по стоимости и СЧА
+```
+3. Создание таблиц с ценами паев и доходности фондов.
+4. Загрузка данных по безрисковой ставке, доходности Индекса МосБиржи и Индекса ММВБ 10 из csv файлов.
+5. Стратегия по составлению портфеля на основе индексных фондов, который максимально повторяет Индекс МосБиржи.
+6. Применение стратегии и создание портфеля бенчмарка.
 ### functions.R
 ### stock.R
 ### future.R
