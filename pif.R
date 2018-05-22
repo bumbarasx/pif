@@ -1,3 +1,4 @@
+##### получение данных, если нет загруженных #####
 links=names=c() # массив ссылок и названий
 for (i in 0:1){ # 2 страницы
   link=paste0("http://pif.investfunds.ru/funds/index.phtml?page=funds&type[]=%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8B%D0%B9&c_val[1]=8&value=1&npage=",i) # адрес страницы
@@ -48,9 +49,11 @@ names(allD)=all[,"Number"] # название в листах соответствуйте внутреннему номеру
 save(all, file=paste0(DIR,"/pifdata/stock/all.RData")) # сохранение в файл
 save(allD, file=paste0(DIR,"/pifdata/stock/allD.RData")) # сохранение в файл
 
+##### подключение данных, если были загружены #####
 load(paste0(DIR,"/pifdata/stock/all.RData"))
 load(paste0(DIR,"/pifdata/stock/allD.RData"))
 
+##### цены и доходность фондов #####
 pif.price=xts()
 pif.return=xts()
 for(i in 1:length(allD)){
@@ -76,7 +79,7 @@ for(i in 1:ncol(pif.return)){
 }
 
 
-
+##### вычисление бутстрап модели по трём бенчмаркам #####
 # функция вычисления лучших фондов
 best.pif=boot.all(return = pif.return, bench = benchmark.pif.return, rf = ru.1y, boot.n = 100, period = 24, l1 = 0.99, l2 = 0.5)
 # результат

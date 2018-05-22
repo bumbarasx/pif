@@ -114,5 +114,6 @@ for(i in 1:nrow(future.data)){
   portfel.history[i]=portfel.bank + portfel.warranty
 }
 
+##### вычисление бенчмарка на основе фьючерса на »ндекс ћосЅиржи #####
 # мес€чна€ доходность бенчмарка
 benchmark.future.return=monthlyReturn(Cl(to.monthly(portfel.history, indexAt = 'lastof')))

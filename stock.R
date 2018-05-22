@@ -8,7 +8,6 @@ for(file in files){
   # добавление данных в одну таблицу
   data.equity=rbind(data.equity,eq)
 }
-tickers<-unique(data.equity[,1])
 
 # информация о базе расчета Индекс ММВБ 10
 mic.10<-read.csv(paste0(DIR,"/10micexdata.csv"),header = FALSE,stringsAsFactors = FALSE)
@@ -79,6 +78,7 @@ for(t in colnames(data.10)){
   data.10[index(y),t]=y[index(data.10)]
 }
 
+# проверка, что всегда есть данные по 10 акциям
 for(i in 1:nrow(data.10)){
   r=data.10[i,]
   if(length(r[,!is.na(r)])<10) print(index(r))
@@ -103,11 +103,13 @@ data.act["2007-07-18","SBERP"]=20
 # чтобы акции не были исклчены из портфеля
 data.act[c("2007-07-19","2007-07-20"),c("SBER","SBERP")]=TRUE
 
+# проверка, что всегда есть данные по 10 акциям
 for(i in 1:nrow(data.act)){
   r=data.act[i,]
   if(length(r[,!is.na(r)])<10) print(index(r))
 }
 
+##### вычисление бенчмарка на основе акций из состава Индекса ММВБ 10 #####
 # вызов функции с параметрами
 benchmark.stock=portfel.equity(data.10, data.act, 1000000, c(0.0001, 0.0001))
 # месячная доходность бенчмарка
