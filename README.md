@@ -1,5 +1,4 @@
 # Russian Mutual Funds Performance Evaluation: A Quantitative Approach
-Данная исследовательская работа посвящена оцениванию паевых инвестиционных фондов на основе бутстрап подхода.
 ## База данных
 ### dta
 * Архивные данные по стоимости акций на Московской Бирже с портала РБК http://export.rbc.ru/expdocs/free.micex.0.shtml
