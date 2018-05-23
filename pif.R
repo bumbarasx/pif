@@ -86,9 +86,9 @@ best.pif=boot.all(return = pif.return, bench = benchmark.pif.return, rf = ru.1y,
 cat(paste(all[all[,3] %in% names(best.pif),1],round(best.pif,2)),sep = "\n")
 
 # функция вычисления лучших фондов
-best.pif=boot.all(return = pif.return, bench = benchmark.pif.return, rf = ru.1y, boot.n = 100, period = 24, l1 = 0.99, l2 = 0.5)
+best.stock=boot.all(return = pif.return, bench = benchmark.stock.return, rf = ru.1y, boot.n = 100, period = 24, l1 = 0.99, l2 = 0.5)
 # результат
-cat(paste(all[all[,3] %in% names(best.pif),1],round(best.pif,2)),sep = "\n")
+cat(paste(all[all[,3] %in% names(best.stock),1],round(best.stock,2)),sep = "\n")
 
 # функция вычисления лучших фондов
 best.future=boot.all(return = pif.return, bench = benchmark.future.return, rf = ru.1y, boot.n = 100, period = 24, l1 = 0.99, l2 = 0.5)

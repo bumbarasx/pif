@@ -54,30 +54,6 @@ for(t in colnames(data.10)){
   data.10[index(y),t]=y[index(data.10)]
 }
 
-for(i in 18:nrow(mic.10)){
-  # база расчета »ндекса ћћ¬Ѕ 10 за определенный период
-  tickers=unlist(mic.10[i,3:length(mic.10[i,])])
-  for(t in tickers){
-    if(t=="") next
-    # данные по одной акции из базы расчЄта
-    y=data.equity[which(data.equity[,1]==t),]
-    # цены закрыти€ по данной акции
-    y=xts(Cl(y),order.by=as.Date(y[,2]))
-    # пересечение дат в таблице и торговых дат дл€ акции
-    #date.inter=intersect(index(data.10),index(y))
-    # заполнение данных в таблице
-    data.10[index(y),t]=y
-  }
-}
-
-for(t in colnames(data.10)){
-  y=data.equity[which(data.equity[,1]==t),]
-  # цены закрыти€ по данной акции
-  y=xts(Cl(y),order.by=as.Date(y[,2]))
-  # заполнение данных в таблице
-  data.10[index(y),t]=y[index(data.10)]
-}
-
 # проверка, что всегда есть данные по 10 акци€м
 for(i in 1:nrow(data.10)){
   r=data.10[i,]
@@ -114,3 +90,9 @@ for(i in 1:nrow(data.act)){
 benchmark.stock=portfel.equity(data.10, data.act, 1000000, c(0.0001, 0.0001))
 # мес€чна€ доходность бенчмарка
 benchmark.stock.return=monthlyReturn(Cl(to.monthly(benchmark.stock, indexAt = 'lastof')))
+dt=intersect(index(benchmark.stock.return),index(moex10))
+test=cbind(moex10[as.Date(dt)],benchmark.stock.return[as.Date(dt)])
+# наименование столбцов
+colnames(test)=c("MOEX10","Portfel")
+charts.PerformanceSummary(test)
+print(summary(lm(test[,2]~test[,1])))

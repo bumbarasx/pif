@@ -4,6 +4,7 @@ require(wdman) # браузер
 require(quantmod)
 require(PerformanceAnalytics)
 require(gdata) # скачивание файла
+require(tseries)
 
 Sys.setlocale("LC_TIME", "English")
 DIR<-dirname(rstudioapi::getSourceEditorContext()$path)

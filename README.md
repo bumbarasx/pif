@@ -1,5 +1,6 @@
 # Russian Mutual Funds Performance Evaluation: A Quantitative Approach
 ## База данных
+image.RData - сохраненные переменные для бутстрапа в программе pif.R и с результатами бутстрапа.
 ### dta
 * Архивные данные по стоимости акций на Московской Бирже с портала РБК http://export.rbc.ru/expdocs/free.micex.0.shtml
 * Каждый файл csv содержит данные за один календарный год.
