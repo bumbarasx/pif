@@ -460,6 +460,7 @@ boot.act=function(boot.res, period = 4){
         k=ifelse((i+period)>=nrow(copy),nrow(copy),(i+period))
         # вычисление конечного мес€ца инвестиции
         k1=ifelse((k+(period-1))>=nrow(copy),nrow(copy),(k+(period-1)))
+        if(k==k1) next
         # запись в таблицу информации о том,
         # в какой фонд будут сделаны инвестции
         copy[index(copy[k:k1,]),best[1]]=1
